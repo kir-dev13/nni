@@ -1,4 +1,40 @@
+.prompt {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.network {
+  &-container {
+
+  }
+
+  &-list {
+    //text-align: left;
+    display: flex;
+    cursor: pointer;
+  }
+
+  &-item {
+    padding: 10px 55px 10px 25px;
+    outline: 1px solid #6600ff;
+
+    &:hover:not(&_active) {
+
+      background-color: rgba(0, 89, 255, 0.22);
+    }
+
+    &_active {
+      background-color: rgba(0, 128, 255, 0.58);
+    }
+
+
+  }
+}
+
 .textarea {
+  margin-top: 10px;
   width: 300px;
   height: 150px;
 }
@@ -9,3 +45,4 @@
   padding: 4px;
   display: block;
 }
+

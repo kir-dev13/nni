@@ -1,25 +1,25 @@
-// const apiUrl = "https://nonexistentusername-stabilityai-stable-diffusion-2-1.hf.space/run/predict"
-const apiUrl = 'https://nonexistentusername-compvis-stable-diffusion-v1-4.hf.space/run/predict'
-
-const query = async (prompt) => {
+const query = async (apiUrl, prompt) => {
     console.log('sending prompt...')
-    try {
-        const response = await fetch(apiUrl, {
-            headers: {
-                "Content-Type": "application/json"
-                // Authorization: `Bearer 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`
-            },
-            method: "POST",
-            body: JSON.stringify({
-                data: [prompt]
-            })
+    const response = await fetch(apiUrl, {
+        headers: {
+            "Content-Type": "application/json"
+            // Authorization: `Bearer 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`
+        },
+        method: "POST",
+        body: JSON.stringify({
+            data: [prompt]
         })
-        console.log(response)
+    })
+    console.log('response: ')
+    console.log(response)
+    if (response.ok) {
         const result = await response.json()
+        console.log(result)
         return result
-    } catch (err) {
-        return err
+    } else {
+        throw new Error('ошибка')
     }
+
 }
 
 export {query}
