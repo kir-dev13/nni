@@ -14,7 +14,6 @@ const query = async (apiUrl, prompt) => {
     console.log(response)
     if (response.ok) {
         const result = await response.json()
-        console.log(result)
         return result
     } else {
         throw new Error('ошибка')
