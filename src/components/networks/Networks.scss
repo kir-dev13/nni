@@ -1,0 +1,28 @@
+.network {
+  &-container {
+
+  }
+
+  &-list {
+    //text-align: left;
+    display: flex;
+
+  }
+
+  &-item {
+    padding: 10px 55px 10px 25px;
+    outline: 1px solid #6600ff;
+    cursor: pointer;
+
+    &:hover:not(&_active) {
+
+      background-color: rgba(0, 89, 255, 0.22);
+    }
+
+    &_active {
+      background-color: rgba(0, 128, 255, 0.58);
+    }
+
+
+  }
+}
