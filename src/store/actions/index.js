@@ -23,3 +23,9 @@ export const successStatus = (payload) => {
         payload: payload
     }
 }
+export const errorStatus = (payload) => {
+    return {
+        type: "ERROR_STATUS",
+        payload: payload
+    }
+}

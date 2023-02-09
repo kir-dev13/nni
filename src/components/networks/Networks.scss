@@ -1,18 +1,29 @@
 .network {
   &-container {
-
+    //width: 100%;
   }
 
   &-list {
     //text-align: left;
     display: flex;
-
+    flex-wrap: wrap;
+    justify-content: center;
+    
   }
 
   &-item {
-    padding: 10px 55px 10px 25px;
+    padding: 10px 10px 10px 25px;
+    //width: 25%;
     outline: 1px solid #6600ff;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    &-status {
+      //border: 1px solid red;
+      width: 30px
+    }
 
     &:hover:not(&_active) {
 

@@ -56,7 +56,8 @@ const Input = () => {
 
             <form className="form prompt">
                 <textarea className='textarea' value={str} type="text" onChange={onInput}/>
-                <span><input type="checkbox" checked={sendAllApi} onChange={handleCheckbox}/>Во все сети</span>
+                <span className={'all_api-checkbox'} onClick={handleCheckbox}><input type="checkbox"
+                                                                                     checked={sendAllApi}/>Во все сети</span>
                 <button onClick={onSubmit} className='sendPromptBtn'>отправить запрос</button>
                 {/*{loading ? <Spinner/> : null}*/}
                 {/*{error ? <span>какая-то ошибка от сервера. попробуйте ещё раз или поменяйте нейросеть</span> : null}*/}

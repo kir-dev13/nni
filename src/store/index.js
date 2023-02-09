@@ -106,6 +106,14 @@ const reducer = (state = getDefaultState(defaultState), action) => {
                     status: 'success'
                 } : {...network})
             }
+        case "ERROR_STATUS":
+            return {
+                ...state,
+                networks: state.networks.map(network => network.id === action.payload ? {
+                    ...network,
+                    status: 'error'
+                } : {...network})
+            }
         default:
             return state
     }
