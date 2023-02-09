@@ -33,7 +33,7 @@ export const fetchingApi = (apiUrl, prompt, selectedApiId) => {
     }
 }
 
-export const fecthingAllApi = (allApisArray, prompt) => {
+export const fecthingAllApis = (allApisArray, prompt) => {
     return dispatch => {
         allApisArray.forEach(item => {
             dispatch(loadingStatus(item.id))

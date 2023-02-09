@@ -1,65 +1,68 @@
 import {configureStore} from "@reduxjs/toolkit";
 
-class Network {
-    constructor(name, url, id) {
-        this.id = id
-        this.name = name
-        this.url = url
-        this.isActive = false
-        this.image = ''
-        this.status = ''
-    }
-}
 
-// const networksArray = [{
-//     name: 'stable diffusion v1.4',
-//     url: 'https://nonexistentusername-compvis-stable-diffusion-v1-4.hf.space/run/predict',
-// }, {
-//     name: 'stable diffusion v2',
-//     url: "https://nonexistentusername-stabilityai-stable-diffusion-2-1.hf.space/run/predict",
-// }]
-
-const defaultState = {
-    networks: [{
-        id: 0,
+const networksList = [
+    {
         name: 'stable diffusion v1.4',
         url: 'https://nonexistentusername-compvis-stable-diffusion-v1-4.hf.space/run/predict',
-        image: '',
-        isActive: true,
-        status: null,
     },
-        {
-            id: 1,
-            name: 'stable diffusion v2',
-            url: "https://nonexistentusername-stabilityai-stable-diffusion-2-1.hf.space/run/predict",
-            image: '',
-            isActive: false,
-            status: null,
-        },
-        {
-            id: 2,
-            name: 'photorealistic-fuen',
-            url: "https://nonexistentusername-claudfuen-photorealistic-fuen-v1.hf.space/run/predict",
-            image: '',
-            isActive: false,
-            status: null,
-        },
-        {
-            id: 3,
-            name: 'analog-diffusion',
-            url: "https://nonexistentusername-wavymulder-analog-diffusion.hf.space/run/predict",
-            image: '',
-            isActive: false,
-            status: null,
-        }]
+    {
+        name: 'stable diffusion v2',
+        url: "https://nonexistentusername-stabilityai-stable-diffusion-2-1.hf.space/run/predict",
+    },
+    {
+        name: 'photorealistic-fuen',
+        url: "https://nonexistentusername-claudfuen-photorealistic-fuen-v1.hf.space/run/predict",
+    },
+    {
+        name: 'analog-diffusion',
+        url: "https://nonexistentusername-wavymulder-analog-diffusion.hf.space/run/predict",
+    },
+    {
+        name: 'stable-diffusion-v1-5',
+        url: "https://nonexistentusername-runwayml-stable-diffusion-v1-5.hf.space/run/predict",
+    },
+    {
+        name: 'prompthero-openjourney',
+        url: "https://nonexistentusername-prompthero-openjourney.hf.space/run/predict",
+    },
+    // {
+    //     name: '',
+    //     url: "",
+    // },
+]
+
+const getNetworks = (networksList) => {
+
+    class Network {
+        constructor(name, url, isActive, id) {
+            this.id = id
+            this.name = name
+            this.url = url
+            this.isActive = isActive
+        }
+
+        isActive = false;
+        image = ''
+        status = ''
+    }
+
+    return networksList.map((network, idx) => {
+        const isActive = idx === 0
+        return new Network(network.name, network.url, isActive, idx)
+    })
 }
+
+const defaultState = {
+    networks: getNetworks(networksList),
+}
+
 
 const getDefaultState = (defaultState) => {
     return ({
         ...defaultState,
-        // networks: networksArray.map((network, idx) => new Network( network.name, network.url, idx)),
-        selectedApi: defaultState.networks.filter(network => network.isActive)[0].url,
-        selectedApiId: defaultState.networks.filter(network => network.isActive)[0].id
+        selectedApi: defaultState.networks.find(network => network.isActive).url,
+        selectedApiId: defaultState.networks.find(network => network.isActive).id
     })
 }
 
@@ -72,7 +75,7 @@ const reducer = (state = getDefaultState(defaultState), action) => {
                     ...network,
                     isActive: true
                 } : {...network, isActive: false}),
-                selectedApi: state.networks.filter(network => network.id === +action.payload)[0].url,
+                selectedApi: state.networks[+action.payload].url,
                 selectedApiId: +action.payload
             }
         case 'INSERT_IMAGE':

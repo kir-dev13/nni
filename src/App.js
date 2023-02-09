@@ -1,12 +1,12 @@
 import {useState} from "react";
-import Input from "./components/Input/Input";
+import InputForm from "./components/InputForm/InputForm";
 import {ReactComponent as Logo} from './logo.svg';
 import './App.css';
-import Networks from "./components/networks/Networks";
+import NetworksTabs from "./components/NetworksTabs/NetworksTabs";
 
 
 function App() {
-    // const [networks, setNetworks] = useState([
+    // const [NetworksTabs, setNetworks] = useState([
     //     {
     //         id: 1,
     //         name: 'stable diffusion v1.4',
@@ -46,8 +46,8 @@ function App() {
         <div className="App">
             {/*<Logo className='App-logo'/>*/}
             <h1>сгенерировать картинку</h1>
-            <Input/>
-            <Networks/>
+            <InputForm/>
+            <NetworksTabs/>
             {/*<NeuroImage imgStr={imgStr}/>*/}
         </div>
 

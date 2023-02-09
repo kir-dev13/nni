@@ -1,28 +1,36 @@
 .network {
   &-container {
     //width: 100%;
+    overflow-x: scroll;
   }
 
   &-list {
     //text-align: left;
+    //margin: auto;
+    max-width: 80%;
+    //min-width: 20%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    
+    //flex-wrap: wrap;
+    //justify-content: center;
+    gap: 1rem;
+
   }
 
   &-item {
     padding: 10px 10px 10px 25px;
+    //min-width: 120px;
     //width: 25%;
     outline: 1px solid #6600ff;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-basis: 20%;
+
 
     &-status {
       //border: 1px solid red;
-      width: 30px
+      width: 30%
     }
 
     &:hover:not(&_active) {

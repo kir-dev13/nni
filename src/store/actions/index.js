@@ -11,7 +11,6 @@ export const insertImage = (payload) => {
     }
 }
 export const loadingStatus = (payload) => {
-    console.log(payload)
     return {
         type: 'LOADING_STATUS',
         payload: payload
