@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/nni/static/css/main.dc8f8df1.css",
-    "main.js": "/nni/static/js/main.24c6592e.js",
+    "main.js": "/nni/static/js/main.ac79e15e.js",
     "static/media/logo.svg": "/nni/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/nni/index.html",
     "main.dc8f8df1.css.map": "/nni/static/css/main.dc8f8df1.css.map",
-    "main.24c6592e.js.map": "/nni/static/js/main.24c6592e.js.map"
+    "main.ac79e15e.js.map": "/nni/static/js/main.ac79e15e.js.map"
   },
   "entrypoints": [
     "static/css/main.dc8f8df1.css",
-    "static/js/main.24c6592e.js"
+    "static/js/main.ac79e15e.js"
   ]
 }
