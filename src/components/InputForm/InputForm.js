@@ -32,7 +32,8 @@ const InputForm = () => {
         <>
 
             <form className="form prompt">
-                <textarea className='textarea' value={str} type="text" onChange={onInput}/>
+                <textarea placeholder={'запрос только на английском'} className='textarea' value={str} type="text"
+                          onChange={onInput}/>
                 <span className={'all_api-checkbox'} onClick={handleCheckbox}><input type="checkbox"
                                                                                      onChange={handleCheckbox}
                                                                                      checked={sendAllApi}/>Во все сети</span>
