@@ -39,8 +39,8 @@ const InputForm = () => {
                         <h1 style={{
                             color: 'white',
                             textShadow: '4px 4px 4px #000'
-                        }}>Create unique</h1>
-                        <textarea placeholder={'In english, please'} className='textarea' value={str}
+                        }}>Create unique image</h1>
+                        <textarea placeholder={'Enter image description in english'} className='textarea' value={str}
                                   type="text"
                                   onChange={onInput}/>
 

@@ -7,6 +7,14 @@
     margin-bottom: 20px;
     //min-height: 120px;
     //display: flex;
+    border-radius: 16px;
+
+    &:hover {
+      //background-color: #f0f0f6;
+      background: rgb(255, 255, 255);
+      background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(240, 240, 246, 1) 99%, rgba(240, 240, 246, 1) 100%);
+    }
+
   }
 
   &-list {
