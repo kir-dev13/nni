@@ -45,7 +45,7 @@ function App() {
 
         <div className="App">
             {/*<Logo className='App-logo'/>*/}
-            <h1>сгенерировать картинку</h1>
+
             <InputForm/>
             <NetworksTabs/>
             {/*<NeuroImage imgStr={imgStr}/>*/}

@@ -31,14 +31,33 @@ const InputForm = () => {
     return (
         <>
 
-            <form className="form prompt">
-                <textarea placeholder={'запрос только на английском'} className='textarea' value={str} type="text"
-                          onChange={onInput}/>
-                <span className={'all_api-checkbox'} onClick={handleCheckbox}><input type="checkbox"
-                                                                                     onChange={handleCheckbox}
-                                                                                     checked={sendAllApi}/>Во все сети</span>
-                <button onClick={onSubmit} className='sendPromptBtn'>отправить запрос</button>
-            </form>
+            <div className={'image-container'}>
+                <div className={'container'}>
+
+                    <form className="form prompt">
+
+                        <h1 style={{
+                            color: 'white',
+                            textShadow: '4px 4px 4px #000'
+                        }}>Create unique</h1>
+                        <textarea placeholder={'In english, please'} className='textarea' value={str}
+                                  type="text"
+                                  onChange={onInput}/>
+
+
+                        <div className={'send-prompt-container'}>
+                            <button onClick={onSubmit} className='sendPromptBtn'>Send</button>
+                            <input className={'checkbox'} id={'all-api'} type="checkbox"
+                                   onChange={handleCheckbox}
+                                   checked={sendAllApi}/><label htmlFor={'all-api'} className={'all_api-checkbox'}
+                        ><b>Send to all
+                            models</b></label>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
 
         </>
 

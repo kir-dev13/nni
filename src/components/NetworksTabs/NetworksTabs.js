@@ -47,19 +47,21 @@ const NetworksTabs = () => {
     }
     return (
         <>
-            <div ref={tabContainer} className={'network-container'}>
-                <ul className={'network-list'}>
-                    {networks.map(network => {
-                        let viewStatus = getStatus(network.status)
-                        return (
-                            <li data-id={network.id} onClick={handleSelect} className={cn('network-item',
-                                {'network-item_active': network.isActive})}
-                                key={network.id}>{network.name} <span
-                                className={'network-item-status'}>{viewStatus}</span>
-                            </li>
-                        )
-                    })}
-                </ul>
+            <div className={'container'}>
+                <div ref={tabContainer} className={'network-container'}>
+                    <ul className={'network-list'}>
+                        {networks.map(network => {
+                            let viewStatus = getStatus(network.status)
+                            return (
+                                <li data-id={network.id} onClick={handleSelect} className={cn('network-item',
+                                    {'network-item_active': network.isActive})}
+                                    key={network.id}>{network.name} <span
+                                    className={'network-item-status'}>{viewStatus}</span>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
             </div>
             <div className={'tabContent'}>
                 {networks.map(network => network.isActive && network.image ?
