@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/nni/static/css/main.dd5b0548.css",
-    "main.js": "/nni/static/js/main.9beca0fa.js",
-    "static/media/neuron_connect.jpg": "/nni/static/media/neuron_connect.cd31459dc042b68025f7.jpg",
+    "main.css": "/nni/static/css/main.4abc7dad.css",
+    "main.js": "/nni/static/js/main.f2e9a3d6.js",
+    "static/media/neuron_connect1.jpg": "/nni/static/media/neuron_connect1.cd31459dc042b68025f7.jpg",
     "static/media/logo.svg": "/nni/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/nni/index.html",
-    "main.dd5b0548.css.map": "/nni/static/css/main.dd5b0548.css.map",
-    "main.9beca0fa.js.map": "/nni/static/js/main.9beca0fa.js.map"
+    "main.4abc7dad.css.map": "/nni/static/css/main.4abc7dad.css.map",
+    "main.f2e9a3d6.js.map": "/nni/static/js/main.f2e9a3d6.js.map"
   },
   "entrypoints": [
-    "static/css/main.dd5b0548.css",
-    "static/js/main.9beca0fa.js"
+    "static/css/main.4abc7dad.css",
+    "static/js/main.f2e9a3d6.js"
   ]
 }
