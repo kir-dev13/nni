@@ -40,7 +40,7 @@ const InputForm = () => {
                             color: 'white',
                             textShadow: '4px 4px 4px #000'
                         }}>Create unique image</h1>
-                        <textarea placeholder={'Enter image description in english'} className='textarea' value={str}
+                        <textarea placeholder={'Enter message in english'} className='textarea' value={str}
                                   type="text"
                                   onChange={onInput}/>
 
