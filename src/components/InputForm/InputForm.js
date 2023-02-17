@@ -1,5 +1,3 @@
-import classNames from "classnames";
-
 import {useState} from "react";
 
 import './InputForm.scss'
@@ -15,7 +13,9 @@ const InputForm = () => {
     const dispatch = useDispatch()
 
     const [str, setStr] = useState('')
-    const [sendAllApi, setSendAllApi] = useState((false))
+    const [sendAllApi, setSendAllApi] = useState(true)
+
+
     const onInput = (e) => {
         setStr(e.target.value)
     }
@@ -23,8 +23,14 @@ const InputForm = () => {
         setSendAllApi(() => !sendAllApi)
     }
 
-    const onSubmit = (e) => {
-        e.preventDefault()
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault()
+            onSubmit()
+        }
+    }
+
+    const onSubmit = () => {
         sendAllApi ? dispatch(fecthingAllApis(allApisArray, str)) : dispatch(fetchingApi(selectedApi, str, selectedApiId))
     }
 
@@ -41,8 +47,9 @@ const InputForm = () => {
                             textShadow: '4px 4px 4px #000'
                         }}>Create unique image</h1>
                         <textarea placeholder={'Enter message in english'} className='textarea' value={str}
-                                  type="text"
-                                  onChange={onInput}/>
+                                 
+                                  onChange={onInput}
+                                  onKeyDown={handleKeyPress}/>
 
 
                         <div className={'send-prompt-container'}>
