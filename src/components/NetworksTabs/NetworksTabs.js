@@ -10,8 +10,8 @@ import {useEffect, useRef} from "react";
 const NetworksTabs = () => {
     const dispatch = useDispatch()
     const networks = useSelector(state => state.networks)
-
     const tabContainer = useRef(null)
+
     useEffect(() => {
         tabContainer.current.addEventListener('wheel', handleHorizontWheel)
         return () => {

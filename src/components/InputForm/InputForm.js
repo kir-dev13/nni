@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 import './InputForm.scss'
 
@@ -14,7 +14,11 @@ const InputForm = () => {
 
     const [str, setStr] = useState('')
     const [sendAllApi, setSendAllApi] = useState(true)
+    const textArea = useRef(null)
 
+    useEffect(() => {
+        textArea.current.focus()
+    }, [])
 
     const onInput = (e) => {
         setStr(e.target.value)
@@ -46,8 +50,9 @@ const InputForm = () => {
                             color: 'white',
                             textShadow: '4px 4px 4px #000'
                         }}>Create unique image</h1>
-                        <textarea placeholder={'Enter message in english'} className='textarea' value={str}
-                                 
+                        <textarea ref={textArea} placeholder={'Enter message in english'} className='textarea'
+                                  value={str}
+
                                   onChange={onInput}
                                   onKeyDown={handleKeyPress}/>
 
