@@ -34,6 +34,11 @@ const InputForm = () => {
         }
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        onSubmit()
+    }
+
     const onSubmit = () => {
         sendAllApi ? dispatch(fecthingAllApis(allApisArray, str)) : dispatch(fetchingApi(selectedApi, str, selectedApiId))
     }
@@ -58,7 +63,7 @@ const InputForm = () => {
 
 
                         <div className={'send-prompt-container'}>
-                            <button onClick={onSubmit} className='sendPromptBtn'>Send</button>
+                            <button onClick={handleSubmit} className='sendPromptBtn'>Send</button>
                             <input className={'checkbox'} id={'all-api'} type="checkbox"
                                    onChange={handleCheckbox}
                                    checked={sendAllApi}/><label htmlFor={'all-api'} className={'all_api-checkbox'}

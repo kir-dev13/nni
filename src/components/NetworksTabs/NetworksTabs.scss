@@ -1,16 +1,13 @@
 .network {
   &-container {
-    width: 100%;
+    width: 90%;
     margin-left: auto;
     padding: 10px 10px 0px 10px;
     overflow-x: auto;
     margin-bottom: 20px;
-    //min-height: 120px;
-    //display: flex;
     border-radius: 16px;
 
     &:hover {
-      //background-color: #f0f0f6;
       background: rgb(255, 255, 255);
       background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(240, 240, 246, 1) 99%, rgba(240, 240, 246, 1) 100%);
     }
@@ -19,18 +16,11 @@
 
   &-list {
     text-align: left;
-    //margin: auto;
-    //max-width: 80%;
-    //min-width: 20%;
     display: flex;
     flex-direction: column;
     height: 160px;
     flex-wrap: wrap;
-    //justify-content: center;
-    //align-items: center;
     gap: 1rem;
-    //align-content: center;
-
   }
 
   &-item {
