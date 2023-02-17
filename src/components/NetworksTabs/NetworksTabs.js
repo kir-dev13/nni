@@ -14,6 +14,9 @@ const NetworksTabs = () => {
     const tabContainer = useRef(null)
     useEffect(() => {
         tabContainer.current.addEventListener('wheel', handleHorizontWheel)
+        return () => {
+            tabContainer.current.removeEventListener('wheel', handleHorizontWheel)
+        }
     }, [])
 
     //** Handlers
@@ -22,7 +25,6 @@ const NetworksTabs = () => {
     }
 
     const handleHorizontWheel = (e) => {
-        // console.log(e)
         e.preventDefault()
         if (e.deltaY > 0) {
             e.currentTarget.scrollLeft += 100;
@@ -65,7 +67,9 @@ const NetworksTabs = () => {
             </div>
             <div className={'tabContent'}>
                 {networks.map(network => network.isActive && network.image ?
-                    <img key={network.id} src={network.image}/> : null)}
+                    <div key={network.id} className={'result-container'}>
+                        <img key={network.id} src={network.image}/>
+                    </div> : null)}
             </div>
         </>
     )
