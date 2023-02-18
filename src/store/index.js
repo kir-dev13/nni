@@ -1,12 +1,5 @@
 import {configureStore} from "@reduxjs/toolkit";
-
-import {
-    SELECT,
-    INSERT_IMAGE,
-    LOADING_STATUS,
-    SUCCESS_STATUS,
-    ERROR_STATUS
-} from './actions'
+import {reducer} from "./reducers";
 
 const networksList = [
     {
@@ -40,7 +33,6 @@ const networksList = [
 ]
 
 const getNetworks = (networksList) => {
-
     class Network {
         constructor(name, url, isActive, id) {
             this.id = id
@@ -59,11 +51,9 @@ const getNetworks = (networksList) => {
         return new Network(network.name, network.url, isActive, idx)
     })
 }
-
-const defaultState = {
+const networks = {
     networks: getNetworks(networksList),
 }
-
 
 const getDefaultState = (defaultState) => {
     return ({
@@ -72,62 +62,8 @@ const getDefaultState = (defaultState) => {
         selectedApiId: defaultState.networks.find(network => network.isActive).id
     })
 }
+export const defaultState = getDefaultState(networks)
 
-const reducer = (state = getDefaultState(defaultState), action) => {
-    switch (action.type) {
-        case SELECT:
-            return {
-                ...state,
-                networks: state.networks.map(network => network.id === +action.payload ? {
-                    ...network,
-                    isActive: true
-                } : {...network, isActive: false}),
-                selectedApi: state.networks[+action.payload].url,
-                selectedApiId: +action.payload
-            }
-        case INSERT_IMAGE:
-            return {
-                ...state,
-                networks: state.networks.map(network => {
-                    if (network.id === action.payload.id) {
-                        return {
-                            ...network,
-                            image: action.payload.image
-                        }
-                    } else {
-                        return network
-                    }
-                })
-
-            }
-        case LOADING_STATUS:
-            return {
-                ...state,
-                networks: state.networks.map(network => network.id === action.payload ? {
-                    ...network,
-                    status: 'loading'
-                } : {...network})
-            }
-        case SUCCESS_STATUS:
-            return {
-                ...state,
-                networks: state.networks.map(network => network.id === action.payload ? {
-                    ...network,
-                    status: 'success'
-                } : {...network})
-            }
-        case ERROR_STATUS:
-            return {
-                ...state,
-                networks: state.networks.map(network => network.id === action.payload ? {
-                    ...network,
-                    status: 'error'
-                } : {...network})
-            }
-        default:
-            return state
-    }
-}
 
 export const store = configureStore({
     reducer: reducer,

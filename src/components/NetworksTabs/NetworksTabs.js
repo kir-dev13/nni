@@ -20,9 +20,19 @@ const NetworksTabs = () => {
         }
     }, [])
 
+    // useEffect(() => {
+    //     networks.forEach(network => {
+    //         if (network.isActive && imgRef.current) scrollToImage()
+    //     })
+    //
+    // }, [networks])
+
     //** Handlers
     const handleSelect = (e) => {
-        if (imgRef.current) scrollToImage()
+        if (imgRef.current) {
+            console.log(imgRef.current)
+            scrollToImage()
+        }
         dispatch(networkSelect(e.currentTarget.getAttribute('data-id')))
 
     }
@@ -38,6 +48,7 @@ const NetworksTabs = () => {
     }
 
     const scrollToImage = () => {
+        console.log('scroll ' + new Date())
         imgRef.current.scrollIntoView({behavior: 'smooth'})
     }
 
