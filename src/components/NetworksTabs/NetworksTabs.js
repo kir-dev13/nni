@@ -5,14 +5,13 @@ import './NetworksTabs.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {networkSelect} from "../../store/actions";
 import Error from "../_ui/Error/Error";
-import {useEffect, useRef} from "react";
+import {useEffect, useState, useRef} from "react";
 import NetworkImage from "../NetworkImage/NetworkImage";
 
 const NetworksTabs = () => {
     const dispatch = useDispatch()
     const networks = useSelector(state => state.networks)
     const tabContainer = useRef(null)
-    const imgRef = useRef(null)
 
     useEffect(() => {
         tabContainer.current.addEventListener('wheel', handleHorizontWheel)
@@ -24,8 +23,10 @@ const NetworksTabs = () => {
     //** Handlers
     const handleSelect = (e) => {
         dispatch(networkSelect(e.currentTarget.getAttribute('data-id')))
-
     }
+
+    //TODO
+
 
     const handleHorizontWheel = (e) => {
         e.preventDefault()
@@ -37,6 +38,12 @@ const NetworksTabs = () => {
         }
     }
 
+    const scrollToImage = () => {
+        tabContainer.current.scrollIntoView({
+            block: "start",
+            behavior: 'smooth'
+        })
+    }
 
     const getStatus = (networkStatus) => {
         switch (networkStatus) {
@@ -71,7 +78,8 @@ const NetworksTabs = () => {
             </div>
             {networks.map(network => {
                 return network.isActive && network.image ?
-                    <NetworkImage key={network.id} tabContainer={tabContainer.current} activeNetwork={network}/> : null
+                    <NetworkImage key={network.id} tabContainer={tabContainer.current} activeNetwork={network}
+                                  scrollToImage={scrollToImage}/> : null
             })}
 
         </>
