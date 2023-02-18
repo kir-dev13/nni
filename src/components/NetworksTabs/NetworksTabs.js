@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {networkSelect} from "../../store/actions";
 import Error from "../_ui/Error/Error";
 import {useEffect, useRef} from "react";
+import NetworkImage from "../NetworkImage/NetworkImage";
 
 const NetworksTabs = () => {
     const dispatch = useDispatch()
@@ -20,19 +21,8 @@ const NetworksTabs = () => {
         }
     }, [])
 
-    // useEffect(() => {
-    //     networks.forEach(network => {
-    //         if (network.isActive && imgRef.current) scrollToImage()
-    //     })
-    //
-    // }, [networks])
-
     //** Handlers
     const handleSelect = (e) => {
-        if (imgRef.current) {
-            console.log(imgRef.current)
-            scrollToImage()
-        }
         dispatch(networkSelect(e.currentTarget.getAttribute('data-id')))
 
     }
@@ -47,10 +37,6 @@ const NetworksTabs = () => {
         }
     }
 
-    const scrollToImage = () => {
-        console.log('scroll ' + new Date())
-        imgRef.current.scrollIntoView({behavior: 'smooth'})
-    }
 
     const getStatus = (networkStatus) => {
         switch (networkStatus) {
@@ -83,12 +69,11 @@ const NetworksTabs = () => {
                     </ul>
                 </div>
             </div>
-            <div className={'tabContent'}>
-                {networks.map(network => network.isActive && network.image ?
-                    <div key={network.id} className={'result-container'}>
-                        <img ref={imgRef} key={network.id} src={network.image}/>
-                    </div> : null)}
-            </div>
+            {networks.map(network => {
+                return network.isActive && network.image ?
+                    <NetworkImage key={network.id} tabContainer={tabContainer.current} activeNetwork={network}/> : null
+            })}
+
         </>
     )
 }
