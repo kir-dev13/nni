@@ -1,8 +1,8 @@
-const SELECT = 'SELECT'
-const INSERT_IMAGE = 'INSERT_IMAGE'
-const LOADING_STATUS = 'LOADING_STATUS'
-const SUCCESS_STATUS = 'SUCCESS_STATUS'
-const ERROR_STATUS = "ERROR_STATUS"
+export const SELECT = 'SELECT'
+export const INSERT_IMAGE = 'INSERT_IMAGE'
+export const LOADING_STATUS = 'LOADING_STATUS'
+export const SUCCESS_STATUS = 'SUCCESS_STATUS'
+export const ERROR_STATUS = "ERROR_STATUS"
 
 export const networkSelect = (payload) => {
     return {

@@ -11,6 +11,7 @@ const NetworksTabs = () => {
     const dispatch = useDispatch()
     const networks = useSelector(state => state.networks)
     const tabContainer = useRef(null)
+    const imgRef = useRef(null)
 
     useEffect(() => {
         tabContainer.current.addEventListener('wheel', handleHorizontWheel)
@@ -21,7 +22,9 @@ const NetworksTabs = () => {
 
     //** Handlers
     const handleSelect = (e) => {
+        if (imgRef.current) scrollToImage()
         dispatch(networkSelect(e.currentTarget.getAttribute('data-id')))
+
     }
 
     const handleHorizontWheel = (e) => {
@@ -32,6 +35,10 @@ const NetworksTabs = () => {
             e.currentTarget.scrollLeft -= 100;
 
         }
+    }
+
+    const scrollToImage = () => {
+        imgRef.current.scrollIntoView({behavior: 'smooth'})
     }
 
     const getStatus = (networkStatus) => {
@@ -68,7 +75,7 @@ const NetworksTabs = () => {
             <div className={'tabContent'}>
                 {networks.map(network => network.isActive && network.image ?
                     <div key={network.id} className={'result-container'}>
-                        <img key={network.id} src={network.image}/>
+                        <img ref={imgRef} key={network.id} src={network.image}/>
                     </div> : null)}
             </div>
         </>

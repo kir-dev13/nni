@@ -1,5 +1,12 @@
 import {configureStore} from "@reduxjs/toolkit";
 
+import {
+    SELECT,
+    INSERT_IMAGE,
+    LOADING_STATUS,
+    SUCCESS_STATUS,
+    ERROR_STATUS
+} from './actions'
 
 const networksList = [
     {
@@ -68,7 +75,7 @@ const getDefaultState = (defaultState) => {
 
 const reducer = (state = getDefaultState(defaultState), action) => {
     switch (action.type) {
-        case 'SELECT':
+        case SELECT:
             return {
                 ...state,
                 networks: state.networks.map(network => network.id === +action.payload ? {
@@ -78,7 +85,7 @@ const reducer = (state = getDefaultState(defaultState), action) => {
                 selectedApi: state.networks[+action.payload].url,
                 selectedApiId: +action.payload
             }
-        case 'INSERT_IMAGE':
+        case INSERT_IMAGE:
             return {
                 ...state,
                 networks: state.networks.map(network => {
@@ -93,7 +100,7 @@ const reducer = (state = getDefaultState(defaultState), action) => {
                 })
 
             }
-        case 'LOADING_STATUS':
+        case LOADING_STATUS:
             return {
                 ...state,
                 networks: state.networks.map(network => network.id === action.payload ? {
@@ -101,7 +108,7 @@ const reducer = (state = getDefaultState(defaultState), action) => {
                     status: 'loading'
                 } : {...network})
             }
-        case 'SUCCESS_STATUS':
+        case SUCCESS_STATUS:
             return {
                 ...state,
                 networks: state.networks.map(network => network.id === action.payload ? {
@@ -109,7 +116,7 @@ const reducer = (state = getDefaultState(defaultState), action) => {
                     status: 'success'
                 } : {...network})
             }
-        case "ERROR_STATUS":
+        case ERROR_STATUS:
             return {
                 ...state,
                 networks: state.networks.map(network => network.id === action.payload ? {
